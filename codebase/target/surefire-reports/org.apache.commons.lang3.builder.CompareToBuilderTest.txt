@@ -1,0 +1,49 @@
+-------------------------------------------------------------------------------
+Test set: org.apache.commons.lang3.builder.CompareToBuilderTest
+-------------------------------------------------------------------------------
+Tests run: 48, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 0.073 sec <<< FAILURE!
+testReflectionHierarchyCompareExcludeFields(org.apache.commons.lang3.builder.CompareToBuilderTest)  Time elapsed: 0.033 sec  <<< ERROR!
+java.lang.reflect.InaccessibleObjectException: Unable to make field private final byte[] java.lang.String.value accessible: module java.base does not "opens java.lang" to unnamed module @3159c4b8
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.AccessibleObject.setAccessible(AccessibleObject.java:131)
+	at org.apache.commons.lang3.builder.CompareToBuilder.reflectionAppend(CompareToBuilder.java:314)
+	at org.apache.commons.lang3.builder.CompareToBuilder.reflectionCompare(CompareToBuilder.java:286)
+	at org.apache.commons.lang3.builder.CompareToBuilder.reflectionCompare(CompareToBuilder.java:167)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.reflectionCompareSignum(CompareToBuilderTest.java:246)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.assertReflectionCompareContract(CompareToBuilderTest.java:218)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.testReflectionHierarchyCompare(CompareToBuilderTest.java:195)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.testReflectionHierarchyCompareExcludeFields(CompareToBuilderTest.java:133)
+
+testReflectionHierarchyCompare(org.apache.commons.lang3.builder.CompareToBuilderTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.reflect.InaccessibleObjectException: Unable to make field private final byte[] java.lang.String.value accessible: module java.base does not "opens java.lang" to unnamed module @3159c4b8
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.AccessibleObject.setAccessible(AccessibleObject.java:131)
+	at org.apache.commons.lang3.builder.CompareToBuilder.reflectionAppend(CompareToBuilder.java:314)
+	at org.apache.commons.lang3.builder.CompareToBuilder.reflectionCompare(CompareToBuilder.java:286)
+	at org.apache.commons.lang3.builder.CompareToBuilder.reflectionCompare(CompareToBuilder.java:167)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.reflectionCompareSignum(CompareToBuilderTest.java:246)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.assertReflectionCompareContract(CompareToBuilderTest.java:218)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.testReflectionHierarchyCompare(CompareToBuilderTest.java:195)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.testReflectionHierarchyCompare(CompareToBuilderTest.java:127)
+
+testReflectionHierarchyCompareTransients(org.apache.commons.lang3.builder.CompareToBuilderTest)  Time elapsed: 0 sec  <<< ERROR!
+java.lang.reflect.InaccessibleObjectException: Unable to make field private final byte[] java.lang.String.value accessible: module java.base does not "opens java.lang" to unnamed module @3159c4b8
+	at java.base/java.lang.reflect.AccessibleObject.throwInaccessibleObjectException(AccessibleObject.java:391)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:367)
+	at java.base/java.lang.reflect.AccessibleObject.checkCanSetAccessible(AccessibleObject.java:315)
+	at java.base/java.lang.reflect.Field.checkCanSetAccessible(Field.java:183)
+	at java.base/java.lang.reflect.AccessibleObject.setAccessible(AccessibleObject.java:131)
+	at org.apache.commons.lang3.builder.CompareToBuilder.reflectionAppend(CompareToBuilder.java:314)
+	at org.apache.commons.lang3.builder.CompareToBuilder.reflectionCompare(CompareToBuilder.java:286)
+	at org.apache.commons.lang3.builder.CompareToBuilder.reflectionCompare(CompareToBuilder.java:167)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.reflectionCompareSignum(CompareToBuilderTest.java:246)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.assertReflectionCompareContract(CompareToBuilderTest.java:218)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.testReflectionHierarchyCompare(CompareToBuilderTest.java:195)
+	at org.apache.commons.lang3.builder.CompareToBuilderTest.testReflectionHierarchyCompareTransients(CompareToBuilderTest.java:152)
+
