@@ -468,7 +468,7 @@ public abstract class ToStringStyle implements Serializable {
      * @param detail  output detail or not
      */
     protected void appendInternal(final StringBuffer buffer, final String fieldName, final Object value, final boolean detail) {
-<span class="pc bpc" id="L471" title="1 of 8 branches missed.">        if (isRegistered(value)</span>
+<span class="fc bfc" id="L471" title="All 8 branches covered.">        if (isRegistered(value)</span>
             &amp;&amp; !(value instanceof Number || value instanceof Boolean || value instanceof Character)) {
 <span class="fc" id="L473">           appendCyclicObject(buffer, fieldName, value);</span>
 <span class="fc" id="L474">           return;</span>

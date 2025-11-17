@@ -301,7 +301,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
 <span class="fc" id="L301">        final int length = pattern.length();</span>
 
 <span class="fc" id="L303">        char c = pattern.charAt(i);</span>
-<span class="fc bfc" id="L304" title="All 8 branches covered.">        if (c &gt;= 'A' &amp;&amp; c &lt;= 'Z' || c &gt;= 'a' &amp;&amp; c &lt;= 'z') {</span>
+<span class="pc bpc" id="L304" title="1 of 8 branches missed.">        if (c &gt;= 'A' &amp;&amp; c &lt;= 'Z' || c &gt;= 'a' &amp;&amp; c &lt;= 'z') {</span>
             // Scan a run of the same character, which indicates a time
             // pattern.
 <span class="fc" id="L307">            buf.append(c);</span>
@@ -332,7 +332,7 @@ public class FastDatePrinter implements DatePrinter, Serializable {
                     } else {
 <span class="fc bfc" id="L333" title="All 2 branches covered.">                        inLiteral = !inLiteral;</span>
                     }
-<span class="fc bfc" id="L335" title="All 10 branches covered.">                } else if (!inLiteral &amp;&amp;</span>
+<span class="pc bpc" id="L335" title="1 of 10 branches missed.">                } else if (!inLiteral &amp;&amp;</span>
                          (c &gt;= 'A' &amp;&amp; c &lt;= 'Z' || c &gt;= 'a' &amp;&amp; c &lt;= 'z')) {
 <span class="fc" id="L337">                    i--;</span>
 <span class="fc" id="L338">                    break;</span>
@@ -384,8 +384,8 @@ public class FastDatePrinter implements DatePrinter, Serializable {
 <span class="nc bnc" id="L384" title="All 2 branches missed.">        } else if (obj instanceof Long) {</span>
 <span class="nc" id="L385">            return format(((Long) obj).longValue(), toAppendTo);</span>
         } else {
-<span class="nc" id="L387">            throw new IllegalArgumentException(&quot;Unknown class: &quot; +</span>
-<span class="nc bnc" id="L388" title="All 2 branches missed.">                (obj == null ? &quot;&lt;null&gt;&quot; : obj.getClass().getName()));</span>
+<span class="nc bnc" id="L387" title="All 2 branches missed.">            throw new IllegalArgumentException(&quot;Unknown class: &quot; +</span>
+<span class="nc" id="L388">                (obj == null ? &quot;&lt;null&gt;&quot; : obj.getClass().getName()));</span>
         }
     }
 

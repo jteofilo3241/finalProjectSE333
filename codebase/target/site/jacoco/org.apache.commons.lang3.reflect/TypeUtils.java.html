@@ -76,7 +76,7 @@ public class TypeUtils {
      */
     private static boolean isAssignable(final Type type, final Type toType,
             final Map&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns) {
-<span class="pc bpc" id="L79" title="1 of 4 branches missed.">        if (toType == null || toType instanceof Class&lt;?&gt;) {</span>
+<span class="fc bfc" id="L79" title="All 4 branches covered.">        if (toType == null || toType instanceof Class&lt;?&gt;) {</span>
 <span class="fc" id="L80">            return isAssignable(type, (Class&lt;?&gt;) toType);</span>
         }
 
@@ -84,8 +84,8 @@ public class TypeUtils {
 <span class="fc" id="L84">            return isAssignable(type, (ParameterizedType) toType, typeVarAssigns);</span>
         }
 
-<span class="pc bpc" id="L87" title="1 of 2 branches missed.">        if (toType instanceof GenericArrayType) {</span>
-<span class="nc" id="L88">            return isAssignable(type, (GenericArrayType) toType, typeVarAssigns);</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">        if (toType instanceof GenericArrayType) {</span>
+<span class="fc" id="L88">            return isAssignable(type, (GenericArrayType) toType, typeVarAssigns);</span>
         }
 
 <span class="pc bpc" id="L91" title="1 of 2 branches missed.">        if (toType instanceof WildcardType) {</span>
@@ -112,13 +112,13 @@ public class TypeUtils {
     private static boolean isAssignable(final Type type, final Class&lt;?&gt; toClass) {
 <span class="fc bfc" id="L113" title="All 2 branches covered.">        if (type == null) {</span>
             // consistency with ClassUtils.isAssignable() behavior
-<span class="pc bpc" id="L115" title="2 of 4 branches missed.">            return toClass == null || !toClass.isPrimitive();</span>
+<span class="pc bpc" id="L115" title="1 of 4 branches missed.">            return toClass == null || !toClass.isPrimitive();</span>
         }
 
         // only a null type can be assigned to null type which
         // would have cause the previous to return true
-<span class="pc bpc" id="L120" title="1 of 2 branches missed.">        if (toClass == null) {</span>
-<span class="nc" id="L121">            return false;</span>
+<span class="fc bfc" id="L120" title="All 2 branches covered.">        if (toClass == null) {</span>
+<span class="fc" id="L121">            return false;</span>
         }
 
         // all types are assignable to themselves
@@ -128,16 +128,16 @@ public class TypeUtils {
 
 <span class="fc bfc" id="L129" title="All 2 branches covered.">        if (type instanceof Class&lt;?&gt;) {</span>
             // just comparing two classes
-<span class="nc" id="L131">            return ClassUtils.isAssignable((Class&lt;?&gt;) type, toClass);</span>
+<span class="fc" id="L131">            return ClassUtils.isAssignable((Class&lt;?&gt;) type, toClass);</span>
         }
 
-<span class="pc bpc" id="L134" title="1 of 2 branches missed.">        if (type instanceof ParameterizedType) {</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">        if (type instanceof ParameterizedType) {</span>
             // only have to compare the raw type to the class
 <span class="fc" id="L136">            return isAssignable(getRawType((ParameterizedType) type), toClass);</span>
         }
 
         // *
-<span class="nc bnc" id="L140" title="All 2 branches missed.">        if (type instanceof TypeVariable&lt;?&gt;) {</span>
+<span class="pc bpc" id="L140" title="1 of 2 branches missed.">        if (type instanceof TypeVariable&lt;?&gt;) {</span>
             // if any of the bounds are assignable to the class, then the
             // type is assignable to the class.
 <span class="nc bnc" id="L143" title="All 2 branches missed.">            for (final Type bound : ((TypeVariable&lt;?&gt;) type).getBounds()) {</span>
@@ -151,11 +151,11 @@ public class TypeUtils {
 
         // the only classes to which a generic array type can be assigned
         // are class Object and array classes
-<span class="nc bnc" id="L154" title="All 2 branches missed.">        if (type instanceof GenericArrayType) {</span>
-<span class="nc bnc" id="L155" title="All 2 branches missed.">            return toClass.equals(Object.class)</span>
-<span class="nc bnc" id="L156" title="All 2 branches missed.">                    || toClass.isArray()</span>
-<span class="nc bnc" id="L157" title="All 2 branches missed.">                    &amp;&amp; isAssignable(((GenericArrayType) type).getGenericComponentType(), toClass</span>
-<span class="nc" id="L158">                            .getComponentType());</span>
+<span class="pc bpc" id="L154" title="1 of 2 branches missed.">        if (type instanceof GenericArrayType) {</span>
+<span class="pc bpc" id="L155" title="1 of 2 branches missed.">            return toClass.equals(Object.class)</span>
+<span class="pc bpc" id="L156" title="1 of 2 branches missed.">                    || toClass.isArray()</span>
+<span class="pc bpc" id="L157" title="1 of 2 branches missed.">                    &amp;&amp; isAssignable(((GenericArrayType) type).getGenericComponentType(), toClass</span>
+<span class="fc" id="L158">                            .getComponentType());</span>
         }
 
         // wildcard types are not assignable to a class (though one would think
@@ -223,9 +223,9 @@ public class TypeUtils {
             // parameters must either be absent from the subject type, within
             // the bounds of the wildcard type, or be an exact match to the
             // parameters of the target type.
-<span class="pc bpc" id="L226" title="1 of 2 branches missed.">            if (fromTypeArg != null</span>
-<span class="pc bpc" id="L227" title="1 of 4 branches missed.">                    &amp;&amp; !toTypeArg.equals(fromTypeArg)</span>
-<span class="pc bpc" id="L228" title="1 of 2 branches missed.">                    &amp;&amp; !(toTypeArg instanceof WildcardType &amp;&amp; isAssignable(fromTypeArg, toTypeArg,</span>
+<span class="fc bfc" id="L226" title="All 2 branches covered.">            if (fromTypeArg != null</span>
+<span class="fc bfc" id="L227" title="All 4 branches covered.">                    &amp;&amp; !toTypeArg.equals(fromTypeArg)</span>
+<span class="fc bfc" id="L228" title="All 2 branches covered.">                    &amp;&amp; !(toTypeArg instanceof WildcardType &amp;&amp; isAssignable(fromTypeArg, toTypeArg,</span>
                             typeVarAssigns))) {
 <span class="fc" id="L230">                return false;</span>
             }
@@ -238,9 +238,9 @@ public class TypeUtils {
         Type result;
         do {
 <span class="fc" id="L240">            result = typeVarAssigns.get(var);</span>
-<span class="pc bpc" id="L241" title="3 of 4 branches missed.">            if (result instanceof TypeVariable&lt;?&gt; &amp;&amp; !result.equals(var)) {</span>
-<span class="nc" id="L242">                var = (TypeVariable&lt;?&gt;) result;</span>
-<span class="nc" id="L243">                continue;</span>
+<span class="fc bfc" id="L241" title="All 4 branches covered.">            if (result instanceof TypeVariable&lt;?&gt; &amp;&amp; !result.equals(var)) {</span>
+<span class="fc" id="L242">                var = (TypeVariable&lt;?&gt;) result;</span>
+<span class="fc" id="L243">                continue;</span>
             }
             break;
         } while (true);
@@ -259,34 +259,34 @@ public class TypeUtils {
      */
     private static boolean isAssignable(final Type type, final GenericArrayType toGenericArrayType,
             final Map&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns) {
-<span class="nc bnc" id="L262" title="All 2 branches missed.">        if (type == null) {</span>
+<span class="pc bpc" id="L262" title="1 of 2 branches missed.">        if (type == null) {</span>
 <span class="nc" id="L263">            return true;</span>
         }
 
         // only a null type can be assigned to null type which
         // would have cause the previous to return true
-<span class="nc bnc" id="L268" title="All 2 branches missed.">        if (toGenericArrayType == null) {</span>
+<span class="pc bpc" id="L268" title="1 of 2 branches missed.">        if (toGenericArrayType == null) {</span>
 <span class="nc" id="L269">            return false;</span>
         }
 
         // all types are assignable to themselves
-<span class="nc bnc" id="L273" title="All 2 branches missed.">        if (toGenericArrayType.equals(type)) {</span>
-<span class="nc" id="L274">            return true;</span>
+<span class="fc bfc" id="L273" title="All 2 branches covered.">        if (toGenericArrayType.equals(type)) {</span>
+<span class="fc" id="L274">            return true;</span>
         }
 
-<span class="nc" id="L277">        final Type toComponentType = toGenericArrayType.getGenericComponentType();</span>
+<span class="fc" id="L277">        final Type toComponentType = toGenericArrayType.getGenericComponentType();</span>
 
-<span class="nc bnc" id="L279" title="All 2 branches missed.">        if (type instanceof Class&lt;?&gt;) {</span>
-<span class="nc" id="L280">            final Class&lt;?&gt; cls = (Class&lt;?&gt;) type;</span>
+<span class="fc bfc" id="L279" title="All 2 branches covered.">        if (type instanceof Class&lt;?&gt;) {</span>
+<span class="fc" id="L280">            final Class&lt;?&gt; cls = (Class&lt;?&gt;) type;</span>
 
             // compare the component types
-<span class="nc bnc" id="L283" title="All 2 branches missed.">            return cls.isArray()</span>
-<span class="nc bnc" id="L284" title="All 2 branches missed.">                    &amp;&amp; isAssignable(cls.getComponentType(), toComponentType, typeVarAssigns);</span>
+<span class="pc bpc" id="L283" title="1 of 2 branches missed.">            return cls.isArray()</span>
+<span class="pc bpc" id="L284" title="1 of 2 branches missed.">                    &amp;&amp; isAssignable(cls.getComponentType(), toComponentType, typeVarAssigns);</span>
         }
 
-<span class="nc bnc" id="L287" title="All 2 branches missed.">        if (type instanceof GenericArrayType) {</span>
+<span class="pc bpc" id="L287" title="1 of 2 branches missed.">        if (type instanceof GenericArrayType) {</span>
             // compare the component types
-<span class="nc" id="L289">            return isAssignable(((GenericArrayType) type).getGenericComponentType(),</span>
+<span class="fc" id="L289">            return isAssignable(((GenericArrayType) type).getGenericComponentType(),</span>
                     toComponentType, typeVarAssigns);
         }
 
@@ -353,59 +353,59 @@ public class TypeUtils {
 <span class="fc" id="L353">        final Type[] toUpperBounds = getImplicitUpperBounds(toWildcardType);</span>
 <span class="fc" id="L354">        final Type[] toLowerBounds = getImplicitLowerBounds(toWildcardType);</span>
 
-<span class="pc bpc" id="L356" title="1 of 2 branches missed.">        if (type instanceof WildcardType) {</span>
-<span class="nc" id="L357">            final WildcardType wildcardType = (WildcardType) type;</span>
-<span class="nc" id="L358">            final Type[] upperBounds = getImplicitUpperBounds(wildcardType);</span>
-<span class="nc" id="L359">            final Type[] lowerBounds = getImplicitLowerBounds(wildcardType);</span>
+<span class="fc bfc" id="L356" title="All 2 branches covered.">        if (type instanceof WildcardType) {</span>
+<span class="fc" id="L357">            final WildcardType wildcardType = (WildcardType) type;</span>
+<span class="fc" id="L358">            final Type[] upperBounds = getImplicitUpperBounds(wildcardType);</span>
+<span class="fc" id="L359">            final Type[] lowerBounds = getImplicitLowerBounds(wildcardType);</span>
 
-<span class="nc bnc" id="L361" title="All 2 branches missed.">            for (Type toBound : toUpperBounds) {</span>
+<span class="fc bfc" id="L361" title="All 2 branches covered.">            for (Type toBound : toUpperBounds) {</span>
                 // if there are assignments for unresolved type variables,
                 // now's the time to substitute them.
-<span class="nc" id="L364">                toBound = substituteTypeVariables(toBound, typeVarAssigns);</span>
+<span class="fc" id="L364">                toBound = substituteTypeVariables(toBound, typeVarAssigns);</span>
 
                 // each upper bound of the subject type has to be assignable to
                 // each
                 // upper bound of the target type
-<span class="nc bnc" id="L369" title="All 2 branches missed.">                for (final Type bound : upperBounds) {</span>
-<span class="nc bnc" id="L370" title="All 2 branches missed.">                    if (!isAssignable(bound, toBound, typeVarAssigns)) {</span>
-<span class="nc" id="L371">                        return false;</span>
+<span class="fc bfc" id="L369" title="All 2 branches covered.">                for (final Type bound : upperBounds) {</span>
+<span class="fc bfc" id="L370" title="All 2 branches covered.">                    if (!isAssignable(bound, toBound, typeVarAssigns)) {</span>
+<span class="fc" id="L371">                        return false;</span>
                     }
                 }
             }
 
-<span class="nc bnc" id="L376" title="All 2 branches missed.">            for (Type toBound : toLowerBounds) {</span>
+<span class="fc bfc" id="L376" title="All 2 branches covered.">            for (Type toBound : toLowerBounds) {</span>
                 // if there are assignments for unresolved type variables,
                 // now's the time to substitute them.
-<span class="nc" id="L379">                toBound = substituteTypeVariables(toBound, typeVarAssigns);</span>
+<span class="fc" id="L379">                toBound = substituteTypeVariables(toBound, typeVarAssigns);</span>
 
                 // each lower bound of the target type has to be assignable to
                 // each
                 // lower bound of the subject type
-<span class="nc bnc" id="L384" title="All 2 branches missed.">                for (final Type bound : lowerBounds) {</span>
-<span class="nc bnc" id="L385" title="All 2 branches missed.">                    if (!isAssignable(toBound, bound, typeVarAssigns)) {</span>
-<span class="nc" id="L386">                        return false;</span>
+<span class="fc bfc" id="L384" title="All 2 branches covered.">                for (final Type bound : lowerBounds) {</span>
+<span class="fc bfc" id="L385" title="All 2 branches covered.">                    if (!isAssignable(toBound, bound, typeVarAssigns)) {</span>
+<span class="fc" id="L386">                        return false;</span>
                     }
                 }
             }
 
-<span class="nc" id="L391">            return true;</span>
+<span class="fc" id="L391">            return true;</span>
         }
 
 <span class="fc bfc" id="L394" title="All 2 branches covered.">        for (final Type toBound : toUpperBounds) {</span>
             // if there are assignments for unresolved type variables,
             // now's the time to substitute them.
-<span class="pc bpc" id="L397" title="1 of 2 branches missed.">            if (!isAssignable(type, substituteTypeVariables(toBound, typeVarAssigns),</span>
+<span class="fc bfc" id="L397" title="All 2 branches covered.">            if (!isAssignable(type, substituteTypeVariables(toBound, typeVarAssigns),</span>
                     typeVarAssigns)) {
-<span class="nc" id="L399">                return false;</span>
+<span class="fc" id="L399">                return false;</span>
             }
         }
 
 <span class="fc bfc" id="L403" title="All 2 branches covered.">        for (final Type toBound : toLowerBounds) {</span>
             // if there are assignments for unresolved type variables,
             // now's the time to substitute them.
-<span class="pc bpc" id="L406" title="1 of 2 branches missed.">            if (!isAssignable(substituteTypeVariables(toBound, typeVarAssigns), type,</span>
+<span class="fc bfc" id="L406" title="All 2 branches covered.">            if (!isAssignable(substituteTypeVariables(toBound, typeVarAssigns), type,</span>
                     typeVarAssigns)) {
-<span class="nc" id="L408">                return false;</span>
+<span class="fc" id="L408">                return false;</span>
             }
         }
 
@@ -469,15 +469,15 @@ public class TypeUtils {
      * @throws IllegalArgumentException if the type cannot be substituted
      */
     private static Type substituteTypeVariables(final Type type, final Map&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns) {
-<span class="pc bpc" id="L472" title="3 of 4 branches missed.">        if (type instanceof TypeVariable&lt;?&gt; &amp;&amp; typeVarAssigns != null) {</span>
-<span class="nc" id="L473">            final Type replacementType = typeVarAssigns.get(type);</span>
+<span class="pc bpc" id="L472" title="1 of 4 branches missed.">        if (type instanceof TypeVariable&lt;?&gt; &amp;&amp; typeVarAssigns != null) {</span>
+<span class="fc" id="L473">            final Type replacementType = typeVarAssigns.get(type);</span>
 
-<span class="nc bnc" id="L475" title="All 2 branches missed.">            if (replacementType == null) {</span>
+<span class="pc bpc" id="L475" title="1 of 2 branches missed.">            if (replacementType == null) {</span>
 <span class="nc" id="L476">                throw new IllegalArgumentException(&quot;missing assignment type for type variable &quot;</span>
                         + type);
             }
 
-<span class="nc" id="L480">            return replacementType;</span>
+<span class="fc" id="L480">            return replacementType;</span>
         }
 
 <span class="fc" id="L483">        return type;</span>
@@ -531,7 +531,7 @@ public class TypeUtils {
      * &lt;code&gt;toClass&lt;/code&gt; inclusive.
      */
     public static Map&lt;TypeVariable&lt;?&gt;, Type&gt; getTypeArguments(final Type type, final Class&lt;?&gt; toClass) {
-<span class="nc" id="L534">        return getTypeArguments(type, toClass, null);</span>
+<span class="fc" id="L534">        return getTypeArguments(type, toClass, null);</span>
     }
 
     /**
@@ -607,15 +607,15 @@ public class TypeUtils {
 <span class="fc" id="L607">        final Type ownerType = parameterizedType.getOwnerType();</span>
         Map&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns;
 
-<span class="pc bpc" id="L610" title="1 of 2 branches missed.">        if (ownerType instanceof ParameterizedType) {</span>
+<span class="fc bfc" id="L610" title="All 2 branches covered.">        if (ownerType instanceof ParameterizedType) {</span>
             // get the owner type arguments first
-<span class="nc" id="L612">            final ParameterizedType parameterizedOwnerType = (ParameterizedType) ownerType;</span>
-<span class="nc" id="L613">            typeVarAssigns = getTypeArguments(parameterizedOwnerType,</span>
-<span class="nc" id="L614">                    getRawType(parameterizedOwnerType), subtypeVarAssigns);</span>
-<span class="nc" id="L615">        } else {</span>
+<span class="fc" id="L612">            final ParameterizedType parameterizedOwnerType = (ParameterizedType) ownerType;</span>
+<span class="fc" id="L613">            typeVarAssigns = getTypeArguments(parameterizedOwnerType,</span>
+<span class="fc" id="L614">                    getRawType(parameterizedOwnerType), subtypeVarAssigns);</span>
+<span class="fc" id="L615">        } else {</span>
             // no owner, prep the type variable assignments map
-<span class="pc bpc" id="L617" title="1 of 2 branches missed.">            typeVarAssigns = subtypeVarAssigns == null ? new HashMap&lt;TypeVariable&lt;?&gt;, Type&gt;()</span>
-<span class="pc" id="L618">                    : new HashMap&lt;TypeVariable&lt;?&gt;, Type&gt;(subtypeVarAssigns);</span>
+<span class="fc bfc" id="L617" title="All 2 branches covered.">            typeVarAssigns = subtypeVarAssigns == null ? new HashMap&lt;TypeVariable&lt;?&gt;, Type&gt;()</span>
+                    : new HashMap&lt;TypeVariable&lt;?&gt;, Type&gt;(subtypeVarAssigns);
         }
 
         // get the subject parameterized type's arguments
@@ -626,17 +626,17 @@ public class TypeUtils {
         // map the arguments to their respective type variables
 <span class="fc bfc" id="L627" title="All 2 branches covered.">        for (int i = 0; i &lt; typeParams.length; i++) {</span>
 <span class="fc" id="L628">            final Type typeArg = typeArgs[i];</span>
-<span class="pc bpc" id="L629" title="1 of 2 branches missed.">            typeVarAssigns.put(typeParams[i], typeVarAssigns.containsKey(typeArg) ? typeVarAssigns</span>
-<span class="pc" id="L630">                    .get(typeArg) : typeArg);</span>
+<span class="fc bfc" id="L629" title="All 2 branches covered.">            typeVarAssigns.put(typeParams[i], typeVarAssigns.containsKey(typeArg) ? typeVarAssigns</span>
+<span class="fc" id="L630">                    .get(typeArg) : typeArg);</span>
         }
 
-<span class="pc bpc" id="L633" title="1 of 2 branches missed.">        if (toClass.equals(cls)) {</span>
+<span class="fc bfc" id="L633" title="All 2 branches covered.">        if (toClass.equals(cls)) {</span>
             // target class has been reached. Done.
 <span class="fc" id="L635">            return typeVarAssigns;</span>
         }
 
         // walk the inheritance hierarchy until the target class is reached
-<span class="nc" id="L639">        return getTypeArguments(getClosestParentType(cls, toClass), toClass, typeVarAssigns);</span>
+<span class="fc" id="L639">        return getTypeArguments(getClosestParentType(cls, toClass), toClass, typeVarAssigns);</span>
     }
 
     /**
@@ -655,29 +655,29 @@ public class TypeUtils {
         }
 
         // can't work with primitives
-<span class="pc bpc" id="L658" title="1 of 2 branches missed.">        if (cls.isPrimitive()) {</span>
+<span class="fc bfc" id="L658" title="All 2 branches covered.">        if (cls.isPrimitive()) {</span>
             // both classes are primitives?
-<span class="nc bnc" id="L660" title="All 2 branches missed.">            if (toClass.isPrimitive()) {</span>
+<span class="pc bpc" id="L660" title="1 of 2 branches missed.">            if (toClass.isPrimitive()) {</span>
                 // dealing with widening here. No type arguments to be
                 // harvested with these two types.
 <span class="nc" id="L663">                return new HashMap&lt;TypeVariable&lt;?&gt;, Type&gt;();</span>
             }
 
             // work with wrapper the wrapper class instead of the primitive
-<span class="nc" id="L667">            cls = ClassUtils.primitiveToWrapper(cls);</span>
+<span class="fc" id="L667">            cls = ClassUtils.primitiveToWrapper(cls);</span>
         }
 
         // create a copy of the incoming map, or an empty one if it's null
-<span class="pc bpc" id="L671" title="1 of 2 branches missed.">        final HashMap&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns = subtypeVarAssigns == null ? new HashMap&lt;TypeVariable&lt;?&gt;, Type&gt;()</span>
-<span class="pc" id="L672">                : new HashMap&lt;TypeVariable&lt;?&gt;, Type&gt;(subtypeVarAssigns);</span>
+<span class="fc bfc" id="L671" title="All 2 branches covered.">        final HashMap&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns = subtypeVarAssigns == null ? new HashMap&lt;TypeVariable&lt;?&gt;, Type&gt;()</span>
+                : new HashMap&lt;TypeVariable&lt;?&gt;, Type&gt;(subtypeVarAssigns);
 
         // has target class been reached?
-<span class="pc bpc" id="L675" title="1 of 2 branches missed.">        if (toClass.equals(cls)) {</span>
+<span class="fc bfc" id="L675" title="All 2 branches covered.">        if (toClass.equals(cls)) {</span>
 <span class="fc" id="L676">            return typeVarAssigns;</span>
         }
 
         // walk the inheritance hierarchy until the target class is reached
-<span class="nc" id="L680">        return getTypeArguments(getClosestParentType(cls, toClass), toClass, typeVarAssigns);</span>
+<span class="fc" id="L680">        return getTypeArguments(getClosestParentType(cls, toClass), toClass, typeVarAssigns);</span>
     }
 
     /**
@@ -712,31 +712,31 @@ public class TypeUtils {
 <span class="fc" id="L712">        final Class&lt;?&gt; superClass = getRawType(superType);</span>
 
         // compatibility check
-<span class="nc bnc" id="L715" title="All 2 branches missed.">        if (!isAssignable(cls, superClass)) {</span>
+<span class="pc bpc" id="L715" title="1 of 2 branches missed.">        if (!isAssignable(cls, superClass)) {</span>
 <span class="nc" id="L716">            return null;</span>
         }
 
-<span class="nc bnc" id="L719" title="All 2 branches missed.">        if (cls.equals(superClass)) {</span>
-<span class="nc" id="L720">            return getTypeArguments(superType, superClass, null);</span>
+<span class="fc bfc" id="L719" title="All 2 branches covered.">        if (cls.equals(superClass)) {</span>
+<span class="fc" id="L720">            return getTypeArguments(superType, superClass, null);</span>
         }
 
         // get the next class in the inheritance hierarchy
-<span class="nc" id="L724">        final Type midType = getClosestParentType(cls, superClass);</span>
+<span class="fc" id="L724">        final Type midType = getClosestParentType(cls, superClass);</span>
 
         // can only be a class or a parameterized type
-<span class="nc bnc" id="L727" title="All 2 branches missed.">        if (midType instanceof Class&lt;?&gt;) {</span>
+<span class="pc bpc" id="L727" title="1 of 2 branches missed.">        if (midType instanceof Class&lt;?&gt;) {</span>
 <span class="nc" id="L728">            return determineTypeArguments((Class&lt;?&gt;) midType, superType);</span>
         }
 
-<span class="nc" id="L731">        final ParameterizedType midParameterizedType = (ParameterizedType) midType;</span>
-<span class="nc" id="L732">        final Class&lt;?&gt; midClass = getRawType(midParameterizedType);</span>
+<span class="fc" id="L731">        final ParameterizedType midParameterizedType = (ParameterizedType) midType;</span>
+<span class="fc" id="L732">        final Class&lt;?&gt; midClass = getRawType(midParameterizedType);</span>
         // get the type variables of the mid class that map to the type
         // arguments of the super class
-<span class="nc" id="L735">        final Map&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns = determineTypeArguments(midClass, superType);</span>
+<span class="fc" id="L735">        final Map&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns = determineTypeArguments(midClass, superType);</span>
         // map the arguments of the mid type to the class type variables
-<span class="nc" id="L737">        mapTypeVariablesToArguments(cls, midParameterizedType, typeVarAssigns);</span>
+<span class="fc" id="L737">        mapTypeVariablesToArguments(cls, midParameterizedType, typeVarAssigns);</span>
 
-<span class="nc" id="L739">        return typeVarAssigns;</span>
+<span class="fc" id="L739">        return typeVarAssigns;</span>
     }
 
     /**
@@ -750,9 +750,9 @@ public class TypeUtils {
     private static &lt;T&gt; void mapTypeVariablesToArguments(final Class&lt;T&gt; cls,
             final ParameterizedType parameterizedType, final Map&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns) {
         // capture the type variables from the owner type that have assignments
-<span class="nc" id="L753">        final Type ownerType = parameterizedType.getOwnerType();</span>
+<span class="fc" id="L753">        final Type ownerType = parameterizedType.getOwnerType();</span>
 
-<span class="nc bnc" id="L755" title="All 2 branches missed.">        if (ownerType instanceof ParameterizedType) {</span>
+<span class="pc bpc" id="L755" title="1 of 2 branches missed.">        if (ownerType instanceof ParameterizedType) {</span>
             // recursion to make sure the owner's owner type gets processed
 <span class="nc" id="L757">            mapTypeVariablesToArguments(cls, (ParameterizedType) ownerType, typeVarAssigns);</span>
         }
@@ -761,30 +761,30 @@ public class TypeUtils {
         // hierarchy of said interface/class) implemented/extended by the class
         // cls. Find out which type variables of cls are type arguments of
         // parameterizedType:
-<span class="nc" id="L764">        final Type[] typeArgs = parameterizedType.getActualTypeArguments();</span>
+<span class="fc" id="L764">        final Type[] typeArgs = parameterizedType.getActualTypeArguments();</span>
 
         // of the cls's type variables that are arguments of parameterizedType,
         // find out which ones can be determined from the super type's arguments
-<span class="nc" id="L768">        final TypeVariable&lt;?&gt;[] typeVars = getRawType(parameterizedType).getTypeParameters();</span>
+<span class="fc" id="L768">        final TypeVariable&lt;?&gt;[] typeVars = getRawType(parameterizedType).getTypeParameters();</span>
 
         // use List view of type parameters of cls so the contains() method can be used:
-<span class="nc" id="L771">        final List&lt;TypeVariable&lt;Class&lt;T&gt;&gt;&gt; typeVarList = Arrays.asList(cls</span>
-<span class="nc" id="L772">                .getTypeParameters());</span>
+<span class="fc" id="L771">        final List&lt;TypeVariable&lt;Class&lt;T&gt;&gt;&gt; typeVarList = Arrays.asList(cls</span>
+<span class="fc" id="L772">                .getTypeParameters());</span>
 
-<span class="nc bnc" id="L774" title="All 2 branches missed.">        for (int i = 0; i &lt; typeArgs.length; i++) {</span>
-<span class="nc" id="L775">            final TypeVariable&lt;?&gt; typeVar = typeVars[i];</span>
-<span class="nc" id="L776">            final Type typeArg = typeArgs[i];</span>
+<span class="fc bfc" id="L774" title="All 2 branches covered.">        for (int i = 0; i &lt; typeArgs.length; i++) {</span>
+<span class="fc" id="L775">            final TypeVariable&lt;?&gt; typeVar = typeVars[i];</span>
+<span class="fc" id="L776">            final Type typeArg = typeArgs[i];</span>
 
             // argument of parameterizedType is a type variable of cls
-<span class="nc bnc" id="L779" title="All 2 branches missed.">            if (typeVarList.contains(typeArg)</span>
+<span class="pc bpc" id="L779" title="1 of 2 branches missed.">            if (typeVarList.contains(typeArg)</span>
             // type variable of parameterizedType has an assignment in
                     // the super type.
-<span class="nc bnc" id="L782" title="All 2 branches missed.">                    &amp;&amp; typeVarAssigns.containsKey(typeVar)) {</span>
+<span class="pc bpc" id="L782" title="1 of 2 branches missed.">                    &amp;&amp; typeVarAssigns.containsKey(typeVar)) {</span>
                 // map the assignment to the cls's type variable
-<span class="nc" id="L784">                typeVarAssigns.put((TypeVariable&lt;?&gt;) typeArg, typeVarAssigns.get(typeVar));</span>
+<span class="fc" id="L784">                typeVarAssigns.put((TypeVariable&lt;?&gt;) typeArg, typeVarAssigns.get(typeVar));</span>
             }
         }
-<span class="nc" id="L787">    }</span>
+<span class="fc" id="L787">    }</span>
 
     /**
      * &lt;p&gt; Closest parent type? Closest to what? The closest parent type to the
@@ -796,20 +796,20 @@ public class TypeUtils {
      */
     private static Type getClosestParentType(final Class&lt;?&gt; cls, final Class&lt;?&gt; superClass) {
         // only look at the interfaces if the super class is also an interface
-<span class="nc bnc" id="L799" title="All 2 branches missed.">        if (superClass.isInterface()) {</span>
+<span class="fc bfc" id="L799" title="All 2 branches covered.">        if (superClass.isInterface()) {</span>
             // get the generic interfaces of the subject class
-<span class="nc" id="L801">            final Type[] interfaceTypes = cls.getGenericInterfaces();</span>
+<span class="fc" id="L801">            final Type[] interfaceTypes = cls.getGenericInterfaces();</span>
             // will hold the best generic interface match found
-<span class="nc" id="L803">            Type genericInterface = null;</span>
+<span class="fc" id="L803">            Type genericInterface = null;</span>
 
             // find the interface closest to the super class
-<span class="nc bnc" id="L806" title="All 2 branches missed.">            for (final Type midType : interfaceTypes) {</span>
-<span class="nc" id="L807">                Class&lt;?&gt; midClass = null;</span>
+<span class="fc bfc" id="L806" title="All 2 branches covered.">            for (final Type midType : interfaceTypes) {</span>
+<span class="fc" id="L807">                Class&lt;?&gt; midClass = null;</span>
 
-<span class="nc bnc" id="L809" title="All 2 branches missed.">                if (midType instanceof ParameterizedType) {</span>
-<span class="nc" id="L810">                    midClass = getRawType((ParameterizedType) midType);</span>
-<span class="nc bnc" id="L811" title="All 2 branches missed.">                } else if (midType instanceof Class&lt;?&gt;) {</span>
-<span class="nc" id="L812">                    midClass = (Class&lt;?&gt;) midType;</span>
+<span class="fc bfc" id="L809" title="All 2 branches covered.">                if (midType instanceof ParameterizedType) {</span>
+<span class="fc" id="L810">                    midClass = getRawType((ParameterizedType) midType);</span>
+<span class="pc bpc" id="L811" title="1 of 2 branches missed.">                } else if (midType instanceof Class&lt;?&gt;) {</span>
+<span class="fc" id="L812">                    midClass = (Class&lt;?&gt;) midType;</span>
                 } else {
 <span class="nc" id="L814">                    throw new IllegalStateException(&quot;Unexpected generic&quot;</span>
                             + &quot; interface type found: &quot; + midType);
@@ -817,21 +817,21 @@ public class TypeUtils {
 
                 // check if this interface is further up the inheritance chain
                 // than the previously found match
-<span class="nc bnc" id="L820" title="All 2 branches missed.">                if (isAssignable(midClass, superClass)</span>
-<span class="nc bnc" id="L821" title="All 2 branches missed.">                        &amp;&amp; isAssignable(genericInterface, (Type) midClass)) {</span>
-<span class="nc" id="L822">                    genericInterface = midType;</span>
+<span class="fc bfc" id="L820" title="All 2 branches covered.">                if (isAssignable(midClass, superClass)</span>
+<span class="pc bpc" id="L821" title="1 of 2 branches missed.">                        &amp;&amp; isAssignable(genericInterface, (Type) midClass)) {</span>
+<span class="fc" id="L822">                    genericInterface = midType;</span>
                 }
             }
 
             // found a match?
-<span class="nc bnc" id="L827" title="All 2 branches missed.">            if (genericInterface != null) {</span>
-<span class="nc" id="L828">                return genericInterface;</span>
+<span class="fc bfc" id="L827" title="All 2 branches covered.">            if (genericInterface != null) {</span>
+<span class="fc" id="L828">                return genericInterface;</span>
             }
         }
 
         // none of the interfaces were descendants of the target class, so the
         // super class has to be one, instead
-<span class="nc" id="L834">        return cls.getGenericSuperclass();</span>
+<span class="fc" id="L834">        return cls.getGenericSuperclass();</span>
     }
 
     /**
@@ -843,12 +843,12 @@ public class TypeUtils {
      * @return true of &lt;code&gt;value&lt;/code&gt; is an instance of &lt;code&gt;type&lt;/code&gt;.
      */
     public static boolean isInstance(final Object value, final Type type) {
-<span class="nc bnc" id="L846" title="All 2 branches missed.">        if (type == null) {</span>
+<span class="pc bpc" id="L846" title="1 of 2 branches missed.">        if (type == null) {</span>
 <span class="nc" id="L847">            return false;</span>
         }
 
-<span class="nc bnc" id="L850" title="All 6 branches missed.">        return value == null ? !(type instanceof Class&lt;?&gt;) || !((Class&lt;?&gt;) type).isPrimitive()</span>
-<span class="nc" id="L851">                : isAssignable(value.getClass(), type, null);</span>
+<span class="pc bpc" id="L850" title="5 of 6 branches missed.">        return value == null ? !(type instanceof Class&lt;?&gt;) || !((Class&lt;?&gt;) type).isPrimitive()</span>
+<span class="fc" id="L851">                : isAssignable(value.getClass(), type, null);</span>
     }
 
     /**
@@ -960,19 +960,19 @@ public class TypeUtils {
     public static boolean typesSatisfyVariables(final Map&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns) {
         // all types must be assignable to all the bounds of the their mapped
         // type variable.
-<span class="pc bpc" id="L963" title="1 of 2 branches missed.">        for (final Map.Entry&lt;TypeVariable&lt;?&gt;, Type&gt; entry : typeVarAssigns.entrySet()) {</span>
+<span class="fc bfc" id="L963" title="All 2 branches covered.">        for (final Map.Entry&lt;TypeVariable&lt;?&gt;, Type&gt; entry : typeVarAssigns.entrySet()) {</span>
 <span class="fc" id="L964">            final TypeVariable&lt;?&gt; typeVar = entry.getKey();</span>
 <span class="fc" id="L965">            final Type type = entry.getValue();</span>
 
-<span class="pc bpc" id="L967" title="1 of 2 branches missed.">            for (final Type bound : getImplicitBounds(typeVar)) {</span>
-<span class="nc bnc" id="L968" title="All 2 branches missed.">                if (!isAssignable(type, substituteTypeVariables(bound, typeVarAssigns),</span>
+<span class="fc bfc" id="L967" title="All 2 branches covered.">            for (final Type bound : getImplicitBounds(typeVar)) {</span>
+<span class="pc bpc" id="L968" title="1 of 2 branches missed.">                if (!isAssignable(type, substituteTypeVariables(bound, typeVarAssigns),</span>
                         typeVarAssigns)) {
 <span class="nc" id="L970">                    return false;</span>
                 }
             }
-<span class="nc" id="L973">        }</span>
+<span class="fc" id="L973">        }</span>
 
-<span class="nc" id="L975">        return true;</span>
+<span class="fc" id="L975">        return true;</span>
     }
 
     /**
@@ -1010,59 +1010,59 @@ public class TypeUtils {
      * the type could not be resolved
      */
     public static Class&lt;?&gt; getRawType(final Type type, final Type assigningType) {
-<span class="pc bpc" id="L1013" title="1 of 2 branches missed.">        if (type instanceof Class&lt;?&gt;) {</span>
+<span class="fc bfc" id="L1013" title="All 2 branches covered.">        if (type instanceof Class&lt;?&gt;) {</span>
             // it is raw, no problem
-<span class="nc" id="L1015">            return (Class&lt;?&gt;) type;</span>
+<span class="fc" id="L1015">            return (Class&lt;?&gt;) type;</span>
         }
 
-<span class="pc bpc" id="L1018" title="1 of 2 branches missed.">        if (type instanceof ParameterizedType) {</span>
+<span class="fc bfc" id="L1018" title="All 2 branches covered.">        if (type instanceof ParameterizedType) {</span>
             // simple enough to get the raw type of a ParameterizedType
 <span class="fc" id="L1020">            return getRawType((ParameterizedType) type);</span>
         }
 
-<span class="nc bnc" id="L1023" title="All 2 branches missed.">        if (type instanceof TypeVariable&lt;?&gt;) {</span>
-<span class="nc bnc" id="L1024" title="All 2 branches missed.">            if (assigningType == null) {</span>
+<span class="fc bfc" id="L1023" title="All 2 branches covered.">        if (type instanceof TypeVariable&lt;?&gt;) {</span>
+<span class="pc bpc" id="L1024" title="1 of 2 branches missed.">            if (assigningType == null) {</span>
 <span class="nc" id="L1025">                return null;</span>
             }
 
             // get the entity declaring this type variable
-<span class="nc" id="L1029">            final Object genericDeclaration = ((TypeVariable&lt;?&gt;) type).getGenericDeclaration();</span>
+<span class="fc" id="L1029">            final Object genericDeclaration = ((TypeVariable&lt;?&gt;) type).getGenericDeclaration();</span>
 
             // can't get the raw type of a method- or constructor-declared type
             // variable
-<span class="nc bnc" id="L1033" title="All 2 branches missed.">            if (!(genericDeclaration instanceof Class&lt;?&gt;)) {</span>
+<span class="pc bpc" id="L1033" title="1 of 2 branches missed.">            if (!(genericDeclaration instanceof Class&lt;?&gt;)) {</span>
 <span class="nc" id="L1034">                return null;</span>
             }
 
             // get the type arguments for the declaring class/interface based
             // on the enclosing type
-<span class="nc" id="L1039">            final Map&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns = getTypeArguments(assigningType,</span>
+<span class="fc" id="L1039">            final Map&lt;TypeVariable&lt;?&gt;, Type&gt; typeVarAssigns = getTypeArguments(assigningType,</span>
                     (Class&lt;?&gt;) genericDeclaration);
 
             // enclosingType has to be a subclass (or subinterface) of the
             // declaring type
-<span class="nc bnc" id="L1044" title="All 2 branches missed.">            if (typeVarAssigns == null) {</span>
+<span class="pc bpc" id="L1044" title="1 of 2 branches missed.">            if (typeVarAssigns == null) {</span>
 <span class="nc" id="L1045">                return null;</span>
             }
 
             // get the argument assigned to this type variable
-<span class="nc" id="L1049">            final Type typeArgument = typeVarAssigns.get(type);</span>
+<span class="fc" id="L1049">            final Type typeArgument = typeVarAssigns.get(type);</span>
 
-<span class="nc bnc" id="L1051" title="All 2 branches missed.">            if (typeArgument == null) {</span>
-<span class="nc" id="L1052">                return null;</span>
+<span class="fc bfc" id="L1051" title="All 2 branches covered.">            if (typeArgument == null) {</span>
+<span class="fc" id="L1052">                return null;</span>
             }
 
             // get the argument for this type variable
-<span class="nc" id="L1056">            return getRawType(typeArgument, assigningType);</span>
+<span class="fc" id="L1056">            return getRawType(typeArgument, assigningType);</span>
         }
 
-<span class="nc bnc" id="L1059" title="All 2 branches missed.">        if (type instanceof GenericArrayType) {</span>
+<span class="pc bpc" id="L1059" title="1 of 2 branches missed.">        if (type instanceof GenericArrayType) {</span>
             // get raw component type
-<span class="nc" id="L1061">            final Class&lt;?&gt; rawComponentType = getRawType(((GenericArrayType) type)</span>
-<span class="nc" id="L1062">                    .getGenericComponentType(), assigningType);</span>
+<span class="fc" id="L1061">            final Class&lt;?&gt; rawComponentType = getRawType(((GenericArrayType) type)</span>
+<span class="fc" id="L1062">                    .getGenericComponentType(), assigningType);</span>
 
             // create array type from raw component type and return its class
-<span class="nc" id="L1065">            return Array.newInstance(rawComponentType, 0).getClass();</span>
+<span class="fc" id="L1065">            return Array.newInstance(rawComponentType, 0).getClass();</span>
         }
 
         // (hand-waving) this is not the method you're looking for

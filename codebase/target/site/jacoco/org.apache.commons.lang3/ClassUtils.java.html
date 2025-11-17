@@ -207,8 +207,8 @@ public class ClassUtils {
         }
 
 <span class="fc" id="L209">        final int lastDotIdx = className.lastIndexOf(PACKAGE_SEPARATOR_CHAR);</span>
-<span class="fc" id="L210">        final int innerIdx = className.indexOf(</span>
-<span class="fc bfc" id="L211" title="All 2 branches covered.">                INNER_CLASS_SEPARATOR_CHAR, lastDotIdx == -1 ? 0 : lastDotIdx + 1);</span>
+<span class="fc bfc" id="L210" title="All 2 branches covered.">        final int innerIdx = className.indexOf(</span>
+                INNER_CLASS_SEPARATOR_CHAR, lastDotIdx == -1 ? 0 : lastDotIdx + 1);
 <span class="fc" id="L212">        String out = className.substring(lastDotIdx + 1);</span>
 <span class="fc bfc" id="L213" title="All 2 branches covered.">        if (innerIdx != -1) {</span>
 <span class="fc" id="L214">            out = out.replace(INNER_CLASS_SEPARATOR_CHAR, PACKAGE_SEPARATOR_CHAR);</span>
@@ -467,7 +467,7 @@ public class ClassUtils {
      * @return {@code true} if assignment possible
      */
     public static boolean isAssignable(final Class&lt;?&gt;[] classArray, final Class&lt;?&gt;... toClassArray) {
-<span class="nc" id="L470">        return isAssignable(classArray, toClassArray, SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_1_5));</span>
+<span class="fc" id="L470">        return isAssignable(classArray, toClassArray, SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_1_5));</span>
     }
 
     /**
@@ -583,7 +583,7 @@ public class ClassUtils {
      * @return {@code true} if assignment possible
      */
     public static boolean isAssignable(final Class&lt;?&gt; cls, final Class&lt;?&gt; toClass) {
-<span class="nc" id="L586">        return isAssignable(cls, toClass, SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_1_5));</span>
+<span class="fc" id="L586">        return isAssignable(cls, toClass, SystemUtils.isJavaVersionAtLeast(JavaVersion.JAVA_1_5));</span>
     }
 
     /**
@@ -1113,7 +1113,7 @@ public class ClassUtils {
 <span class="fc" id="L1113">                    className = className.substring(</span>
                         1,
 <span class="pc bpc" id="L1115" title="1 of 2 branches missed.">                        className.endsWith(&quot;;&quot;)</span>
-<span class="fc" id="L1116">                            ? className.length() - 1</span>
+<span class="pc" id="L1116">                            ? className.length() - 1</span>
 <span class="nc" id="L1117">                            : className.length());</span>
                 } else {
 <span class="pc bpc" id="L1119" title="1 of 2 branches missed.">                    if (className.length() &gt; 0) {</span>

@@ -464,12 +464,37 @@ public class NumberUtils {
             }
         }
         if (pfxLen > 0) { // we have a hex number
-            final int hexDigits = str.length() - pfxLen;
+            // Use the significant hex digits (ignore leading zeros) when deciding type
+            String hexDigitsStr = str.substring(pfxLen);
+            // strip leading zeros to determine significant hex digit count
+            int idx = 0;
+            while (idx < hexDigitsStr.length() && hexDigitsStr.charAt(idx) == '0') {
+                idx++;
+            }
+            final String significant = idx == hexDigitsStr.length() ? "0" : hexDigitsStr.substring(idx);
+            final int hexDigits = significant.length();
             if (hexDigits > 16) { // too many for Long
                 return createBigInteger(str);
             }
-            if (hexDigits > 8) { // too many for an int
+            if (hexDigits == 16) {
+                // 16 hex digits may overflow signed long when the highest nibble is set
+                // e.g., 0x8000000000000000 is > Long.MAX_VALUE and should be a BigInteger
+                final int first = Character.digit(significant.charAt(0), 16);
+                if (first >= 8) {
+                    return createBigInteger(str);
+                }
                 return createLong(str);
+            }
+            if (hexDigits > 8) { // too many for an int but fits in a long
+                return createLong(str);
+            }
+            if (hexDigits == 8) {
+                // 8 hex digits can overflow signed int when the highest bit is set
+                // e.g., 0x80000000 should be treated as a long (unsigned > Integer.MAX_VALUE)
+                final int first = Character.digit(significant.charAt(0), 16);
+                if (first >= 8) {
+                    return createLong(str);
+                }
             }
             return createInteger(str);
         }

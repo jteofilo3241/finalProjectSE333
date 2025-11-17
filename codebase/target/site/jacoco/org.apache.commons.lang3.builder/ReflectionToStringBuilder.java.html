@@ -480,9 +480,9 @@ public class ReflectionToStringBuilder extends ToStringBuilder {
             // Reject transient fields.
 <span class="fc" id="L481">            return false;</span>
         }
-<span class="pc bpc" id="L483" title="1 of 4 branches missed.">        if (Modifier.isStatic(field.getModifiers()) &amp;&amp; !this.isAppendStatics()) {</span>
+<span class="fc bfc" id="L483" title="All 4 branches covered.">        if (Modifier.isStatic(field.getModifiers()) &amp;&amp; !this.isAppendStatics()) {</span>
             // Reject static fields.
-<span class="nc" id="L485">            return false;</span>
+<span class="fc" id="L485">            return false;</span>
         }
 <span class="fc bfc" id="L487" title="All 2 branches covered.">        if (this.excludeFieldNames != null</span>
 <span class="fc bfc" id="L488" title="All 2 branches covered.">            &amp;&amp; Arrays.binarySearch(this.excludeFieldNames, field.getName()) &gt;= 0) {</span>

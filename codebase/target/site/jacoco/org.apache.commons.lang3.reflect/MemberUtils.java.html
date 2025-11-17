@@ -134,14 +134,14 @@ import org.apache.commons.lang3.ClassUtils;
         }
 <span class="fc" id="L135">        float cost = 0.0f;</span>
 <span class="fc bfc" id="L136" title="All 4 branches covered.">        while (srcClass != null &amp;&amp; !destClass.equals(srcClass)) {</span>
-<span class="pc bpc" id="L137" title="3 of 4 branches missed.">            if (destClass.isInterface() &amp;&amp; ClassUtils.isAssignable(srcClass, destClass)) {</span>
+<span class="pc bpc" id="L137" title="1 of 4 branches missed.">            if (destClass.isInterface() &amp;&amp; ClassUtils.isAssignable(srcClass, destClass)) {</span>
                 // slight penalty for interface match.
                 // we still want an exact match to override an interface match,
                 // but
                 // an interface match should override anything where we have to
                 // get a superclass.
-<span class="nc" id="L143">                cost += 0.25f;</span>
-<span class="nc" id="L144">                break;</span>
+<span class="fc" id="L143">                cost += 0.25f;</span>
+<span class="fc" id="L144">                break;</span>
             }
 <span class="fc" id="L146">            cost++;</span>
 <span class="fc" id="L147">            srcClass = srcClass.getSuperclass();</span>

@@ -402,7 +402,7 @@ public class EqualsBuilder implements Builder&lt;Boolean&gt; {
 <span class="fc bfc" id="L402" title="All 2 branches covered.">                if (!ArrayUtils.contains(excludeFields, f.getName())</span>
 <span class="fc bfc" id="L403" title="All 4 branches covered.">                    &amp;&amp; (f.getName().indexOf('$') == -1)</span>
 <span class="fc bfc" id="L404" title="All 2 branches covered.">                    &amp;&amp; (useTransients || !Modifier.isTransient(f.getModifiers()))</span>
-<span class="pc bpc" id="L405" title="1 of 2 branches missed.">                    &amp;&amp; (!Modifier.isStatic(f.getModifiers()))) {</span>
+<span class="fc bfc" id="L405" title="All 2 branches covered.">                    &amp;&amp; (!Modifier.isStatic(f.getModifiers()))) {</span>
                     try {
 <span class="fc" id="L407">                        builder.append(f.get(lhs), f.get(rhs));</span>
 <span class="nc" id="L408">                    } catch (final IllegalAccessException e) {</span>

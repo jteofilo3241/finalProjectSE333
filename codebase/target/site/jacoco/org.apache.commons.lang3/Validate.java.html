@@ -998,8 +998,8 @@ public class Validate {
     public static void isInstanceOf(final Class&lt;?&gt; type, final Object obj) {
         // TODO when breaking BC, consider returning obj
 <span class="fc bfc" id="L1000" title="All 2 branches covered.">        if (type.isInstance(obj) == false) {</span>
-<span class="fc" id="L1001">            throw new IllegalArgumentException(String.format(DEFAULT_IS_INSTANCE_OF_EX_MESSAGE, type.getName(),</span>
-<span class="pc bpc" id="L1002" title="1 of 2 branches missed.">                    obj == null ? &quot;null&quot; : obj.getClass().getName()));</span>
+<span class="pc bpc" id="L1001" title="1 of 2 branches missed.">            throw new IllegalArgumentException(String.format(DEFAULT_IS_INSTANCE_OF_EX_MESSAGE, type.getName(),</span>
+<span class="fc" id="L1002">                    obj == null ? &quot;null&quot; : obj.getClass().getName()));</span>
         }
 <span class="fc" id="L1004">    }</span>
 

@@ -181,7 +181,7 @@ public class HashCodeBuilder implements Builder&lt;Integer&gt; {
 <span class="fc bfc" id="L181" title="All 2 branches covered.">                if (!ArrayUtils.contains(excludeFields, field.getName())</span>
 <span class="fc bfc" id="L182" title="All 4 branches covered.">                    &amp;&amp; (field.getName().indexOf('$') == -1)</span>
 <span class="fc bfc" id="L183" title="All 2 branches covered.">                    &amp;&amp; (useTransients || !Modifier.isTransient(field.getModifiers()))</span>
-<span class="pc bpc" id="L184" title="1 of 2 branches missed.">                    &amp;&amp; (!Modifier.isStatic(field.getModifiers()))) {</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">                    &amp;&amp; (!Modifier.isStatic(field.getModifiers()))) {</span>
                     try {
 <span class="fc" id="L186">                        final Object fieldValue = field.get(object);</span>
 <span class="fc" id="L187">                        builder.append(fieldValue);</span>

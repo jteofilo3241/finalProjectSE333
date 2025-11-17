@@ -500,8 +500,8 @@ public class FastDateParser implements DateParser, Serializable {
 <span class="fc" id="L500">        Strategy strategy= cache.get(locale);</span>
 <span class="fc bfc" id="L501" title="All 2 branches covered.">        if(strategy==null) {</span>
 <span class="fc bfc" id="L502" title="All 2 branches covered.">            strategy= field==Calendar.ZONE_OFFSET</span>
-<span class="fc" id="L503">                    ? new TimeZoneStrategy(locale)</span>
-<span class="fc" id="L504">                    : new TextStrategy(field, definingCalendar, locale);</span>
+                    ? new TimeZoneStrategy(locale)
+                    : new TextStrategy(field, definingCalendar, locale);
 <span class="fc" id="L505">            final Strategy inCache= cache.putIfAbsent(locale, strategy);</span>
 <span class="pc bpc" id="L506" title="1 of 2 branches missed.">            if(inCache!=null) {</span>
 <span class="nc" id="L507">                return inCache;</span>
@@ -714,7 +714,7 @@ public class FastDateParser implements DateParser, Serializable {
         @Override
         void setCalendar(final FastDateParser parser, final Calendar cal, final String value) {
             TimeZone tz;
-<span class="fc bfc" id="L717" title="All 4 branches covered.">            if(value.charAt(0)=='+' || value.charAt(0)=='-') {</span>
+<span class="pc bpc" id="L717" title="1 of 4 branches missed.">            if(value.charAt(0)=='+' || value.charAt(0)=='-') {</span>
 <span class="fc" id="L718">                tz= TimeZone.getTimeZone(&quot;GMT&quot;+value);</span>
             }
 <span class="pc bpc" id="L720" title="1 of 2 branches missed.">            else if(value.startsWith(&quot;GMT&quot;)) {</span>

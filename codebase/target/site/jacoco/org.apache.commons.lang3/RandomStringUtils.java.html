@@ -262,8 +262,8 @@ public class RandomStringUtils {
 <span class="fc bfc" id="L262" title="All 6 branches covered.">                    || numbers &amp;&amp; Character.isDigit(ch)</span>
                     || !letters &amp;&amp; !numbers) {
 <span class="fc bfc" id="L264" title="All 4 branches covered.">                if(ch &gt;= 56320 &amp;&amp; ch &lt;= 57343) {</span>
-<span class="pc bpc" id="L265" title="1 of 2 branches missed.">                    if(count == 0) {</span>
-<span class="nc" id="L266">                        count++;</span>
+<span class="fc bfc" id="L265" title="All 2 branches covered.">                    if(count == 0) {</span>
+<span class="fc" id="L266">                        count++;</span>
                     } else {
                         // low surrogate, insert high surrogate after putting it in
 <span class="fc" id="L269">                        buffer[count] = ch;</span>
@@ -271,8 +271,8 @@ public class RandomStringUtils {
 <span class="fc" id="L271">                        buffer[count] = (char) (55296 + random.nextInt(128));</span>
                     }
 <span class="fc bfc" id="L273" title="All 4 branches covered.">                } else if(ch &gt;= 55296 &amp;&amp; ch &lt;= 56191) {</span>
-<span class="pc bpc" id="L274" title="1 of 2 branches missed.">                    if(count == 0) {</span>
-<span class="nc" id="L275">                        count++;</span>
+<span class="fc bfc" id="L274" title="All 2 branches covered.">                    if(count == 0) {</span>
+<span class="fc" id="L275">                        count++;</span>
                     } else {
                         // high surrogate, insert low surrogate before putting it in
 <span class="fc" id="L278">                        buffer[count] = (char) (56320 + random.nextInt(128));</span>

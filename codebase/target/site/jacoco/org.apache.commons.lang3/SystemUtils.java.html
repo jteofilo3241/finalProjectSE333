@@ -1366,7 +1366,7 @@ public class SystemUtils {
      * @since Java 1.4
      */
     public static boolean isJavaAwtHeadless() {
-<span class="nc bnc" id="L1369" title="All 2 branches missed.">        return JAVA_AWT_HEADLESS != null ? JAVA_AWT_HEADLESS.equals(Boolean.TRUE.toString()) : false;</span>
+<span class="pc bpc" id="L1369" title="1 of 2 branches missed.">        return JAVA_AWT_HEADLESS != null ? JAVA_AWT_HEADLESS.equals(Boolean.TRUE.toString()) : false;</span>
     }
 
     /**
@@ -1385,7 +1385,7 @@ public class SystemUtils {
      * @return {@code true} if the actual version is equal or greater than the required version
      */
     public static boolean isJavaVersionAtLeast(final JavaVersion requiredVersion) {
-<span class="nc" id="L1388">        return JAVA_SPECIFICATION_VERSION_AS_ENUM.atLeast(requiredVersion);</span>
+<span class="fc" id="L1388">        return JAVA_SPECIFICATION_VERSION_AS_ENUM.atLeast(requiredVersion);</span>
     }
 
     /**

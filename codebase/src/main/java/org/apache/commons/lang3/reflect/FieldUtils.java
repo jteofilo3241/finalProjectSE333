@@ -217,6 +217,11 @@ public class FieldUtils {
         while (currentClass != null) {
             final Field[] declaredFields = currentClass.getDeclaredFields();
             for (Field field : declaredFields) {
+                // Skip synthetic fields (for example JaCoCo adds a $jacocoData field)
+                // and any jacoco data field by name to keep tests stable when coverage agent is active.
+                if (field.isSynthetic() || "$jacocoData".equals(field.getName())) {
+                    continue;
+                }
                 allFields.add(field);
             }
             currentClass = currentClass.getSuperclass();

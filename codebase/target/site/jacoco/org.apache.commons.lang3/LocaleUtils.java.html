@@ -141,11 +141,11 @@ public class LocaleUtils {
 <span class="fc bfc" id="L141" title="All 2 branches covered.">        if (len == 5) {</span>
 <span class="fc" id="L142">            return new Locale(str.substring(0, 2), str.substring(3, 5));</span>
         }
-<span class="pc bpc" id="L144" title="1 of 2 branches missed.">        if (len &lt; 7) {</span>
-<span class="nc" id="L145">            throw new IllegalArgumentException(&quot;Invalid locale format: &quot; + str);</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">        if (len &lt; 7) {</span>
+<span class="fc" id="L145">            throw new IllegalArgumentException(&quot;Invalid locale format: &quot; + str);</span>
         }
-<span class="pc bpc" id="L147" title="1 of 2 branches missed.">        if (str.charAt(5) != '_') {</span>
-<span class="nc" id="L148">            throw new IllegalArgumentException(&quot;Invalid locale format: &quot; + str);</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">        if (str.charAt(5) != '_') {</span>
+<span class="fc" id="L148">            throw new IllegalArgumentException(&quot;Invalid locale format: &quot; + str);</span>
         }
 <span class="fc" id="L150">        return new Locale(str.substring(0, 2), str.substring(3, 5), str.substring(6));</span>
     }

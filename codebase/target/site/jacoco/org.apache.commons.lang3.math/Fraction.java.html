@@ -755,8 +755,8 @@ public final class Fraction extends Number implements Comparable&lt;Fraction&gt;
             // result is ( (u*v' +/- u'v) / u'v')
 <span class="fc" id="L756">            final int uvp = mulAndCheck(numerator, fraction.denominator);</span>
 <span class="fc" id="L757">            final int upv = mulAndCheck(fraction.numerator, denominator);</span>
-<span class="fc" id="L758">            return new Fraction</span>
-<span class="fc bfc" id="L759" title="All 2 branches covered.">                (isAdd ? addAndCheck(uvp, upv) : subAndCheck(uvp, upv),</span>
+<span class="fc bfc" id="L758" title="All 2 branches covered.">            return new Fraction</span>
+<span class="fc" id="L759">                (isAdd ? addAndCheck(uvp, upv) : subAndCheck(uvp, upv),</span>
 <span class="fc" id="L760">                 mulPosAndCheck(denominator, fraction.denominator));</span>
         }
         // the quantity 't' requires 65 bits of precision; see knuth 4.5.1
